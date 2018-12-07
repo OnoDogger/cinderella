@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://code.ono.org/schema/config"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://code.ono.org/schema/config"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans" />
+    <xsd:element name="files">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="locations" type="xsd:string" use="required"/>
+                    <xsd:attribute name="excludes" type="xsd:string" use="optional"/>
+                    <xsd:attribute name="type" type="xsd:string" use="optional" default="ALL"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="storage">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="type" type="xsd:string" use="optional" default="pg"/>
+                    <xsd:attribute name="address" type="xsd:string" use="required"/>
+                    <xsd:attribute name="user" type="xsd:string" use="optional"/>
+                    <xsd:attribute name="password" type="xsd:string" use="optional" />
+                    <xsd:attribute name="hostname" type="xsd:string" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="reporter">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="reporterAddress" type="xsd:string" use="required"/>
+                    <xsd:attribute name="url" type="xsd:string" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

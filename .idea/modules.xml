@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cinderella.iml" filepath="$PROJECT_DIR$/cinderella.iml" />
+      <module fileurl="file://$PROJECT_DIR$/syn-configuration-file-change/syn-configuration-file-change.iml" filepath="$PROJECT_DIR$/syn-configuration-file-change/syn-configuration-file-change.iml" />
+      <module fileurl="file://$PROJECT_DIR$/syn-configuration-file-project/syn-configuration-file-project.iml" filepath="$PROJECT_DIR$/syn-configuration-file-project/syn-configuration-file-project.iml" />
+    </modules>
+  </component>
+</project>

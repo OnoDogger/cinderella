@@ -1,0 +1,3 @@
+properties=org.ono.services.impl.PropContextType
+xml=org.ono.services.impl.XmlContextType
+yml=org.ono.services.impl.YmlContextType

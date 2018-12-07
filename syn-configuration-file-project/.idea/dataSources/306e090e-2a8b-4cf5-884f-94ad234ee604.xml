@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="PostgreSQL - postgres@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.1">
+    <root id="1"/>
+    <database id="2" parent="1" name="postgres">
+      <ObjectId>13281</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-11-30.13:46:02.677</IntrospectionTimestamp>
+      <IntrospectionStateNumber>579</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="5" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="6" parent="2" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="information_schema">
+      <ObjectId>12990</ObjectId>
+    </schema>
+    <sequence id="9" parent="3" name="config_id_seq">
+      <ObjectId>16414</ObjectId>
+      <StateNumber>576</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <table id="10" parent="3" name="configurations">
+      <ObjectId>16406</ObjectId>
+      <StateNumber>574</StateNumber>
+    </table>
+    <column id="11" parent="10" name="config_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>574</StateNumber>
+      <SequenceName>config_id_seq</SequenceName>
+    </column>
+    <column id="12" parent="10" name="hostname_or_ip">
+      <Position>2</Position>
+      <DataType>varchar(10)|0</DataType>
+      <StateNumber>574</StateNumber>
+    </column>
+    <column id="13" parent="10" name="config_files_map">
+      <Position>3</Position>
+      <DataType>varchar(512)|0</DataType>
+      <StateNumber>574</StateNumber>
+    </column>
+    <column id="14" parent="10" name="create_time">
+      <Position>4</Position>
+      <DataType>bigint|0</DataType>
+      <StateNumber>574</StateNumber>
+    </column>
+    <column id="15" parent="10" name="update_time">
+      <Position>5</Position>
+      <DataType>bigint|0</DataType>
+      <StateNumber>574</StateNumber>
+    </column>
+    <index id="16" parent="10" name="configurations_pkey">
+      <ObjectId>16412</ObjectId>
+      <ColNames>config_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="17" parent="10" name="index_hostname_or_ip">
+      <ObjectId>16416</ObjectId>
+      <ColNames>hostname_or_ip</ColNames>
+    </index>
+    <index id="18" parent="10" name="index_create_time">
+      <ObjectId>16417</ObjectId>
+      <ColNames>create_time</ColNames>
+    </index>
+    <index id="19" parent="10" name="index_update_time">
+      <ObjectId>16418</ObjectId>
+      <ColNames>update_time</ColNames>
+    </index>
+    <key id="20" parent="10" name="configurations_pkey">
+      <ObjectId>16413</ObjectId>
+      <ColNames>config_id</ColNames>
+      <UnderlyingIndexName>configurations_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

@@ -1,0 +1,32 @@
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>2</value>
+        <description>设置副本数</description>
+    </property>
+
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:///root/BigData/hadoop-3.0.0/hdfs/name</value>
+        <description>设置存放NameNode的文件路径</description>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:///root/BigData/hadoop-3.0.0/hdfs/data</value>
+        <description>设置存放DataNode的文件路径</description>
+    </property>
+
+    <property>
+        <name>dfs.permissions</name>
+        <value>false</value>
+        <description>权限还是不要的好</description>
+    </property>
+
+    <property>
+        <name>dfs.secondary.http.address</name>
+        <value>master:50070</value>
+        <description>SNN路径</description>
+    </property>
+
+</configuration>
