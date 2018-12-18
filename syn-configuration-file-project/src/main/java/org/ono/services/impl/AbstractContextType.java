@@ -101,12 +101,6 @@ public abstract class AbstractContextType implements IContextType {
         Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
 
             @Override
-            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-                LOG.info("directories list {}", dir.toString());
-                return FileVisitResult.CONTINUE;
-            }
-
-            @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 String fileType = FileUtils.findFileType(file);
                 if (Constants.unmodifiableTypesList.contains(fileType)

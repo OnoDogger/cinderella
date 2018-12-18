@@ -59,11 +59,8 @@ public class DirectoryChangeListener implements Runnable {
         if (Constants.unmodifiableTypesList.contains(type)) {
             contextType = Extensions.getFactory(IContextType.class, type);
             contextType.updateConfig(path, excludeFiles, type);
+            contextType.storageConfigMap();
         }
-        //todo 这一步需要测试type == all的情况
-        contextType.storageConfigMap();
-        //todo 保存到pg里面通知同步配置文件系统到服务进行配置文件到同步 restful 服务
-
         Reporter reporter = AppContext.getBean("reporter");
         final Map<String, String> m = new HashMap<String, String>() {{
             put("hostName", ((Storage) AppContext.getBean("storage")).getHostname());
@@ -115,26 +112,24 @@ public class DirectoryChangeListener implements Runnable {
                 for (final WatchEvent<?> event : watchEvents) {
                     WatchEvent<Path> watchEvent = (WatchEvent<Path>) event;
                     WatchEvent.Kind<Path> kind = watchEvent.kind();
-
+                    Path watchable = ((Path) watchKey.watchable()).resolve(watchEvent.context());
                     if (kind == StandardWatchEventKinds.ENTRY_CREATE) {
-                        Path watchable = ((Path) watchKey.watchable()).resolve(watchEvent.context());
                         if (Files.isDirectory(watchable)) {
-                            //todo 需要测试
                             watchable.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
                             updateData(watchable, null);
                         }
                     } else if (kind == StandardWatchEventKinds.ENTRY_MODIFY) {
-                        Path p = (Path) watchKey.watchable();
-                        LOG.info("file {} changed", watchEvent.context());
-                        String filePath = p.resolve(watchEvent.context()).toString();
-                        long t = System.currentTimeMillis();
-
-                        if (!fileKey.equals(filePath) || time > (t + Constants.TIME_INTERVAL)) {
-                            updateData(p, watchEvent.context().getFileName().toString());
-                            fileKey = filePath;
-                            time = t;
+                        if (Files.isRegularFile(watchable)) {
+                            Path p = (Path) watchKey.watchable();
+                            LOG.info("file {} changed", watchEvent.context());
+                            String filePath = watchable.toString();
+                            long t = System.currentTimeMillis();
+                            if (!fileKey.equals(filePath) || time > (t + Constants.TIME_INTERVAL)) {
+                                updateData(p, watchEvent.context().getFileName().toString());
+                                fileKey = filePath;
+                                time = t;
+                            }
                         }
-
                     }
                 }
             } catch (Exception e) {
