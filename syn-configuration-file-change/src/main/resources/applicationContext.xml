@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:ono="http://code.ono.org/schema/config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.ono.org/schema/config  http://code.ono.org/schema/config.xsd">
+
+    <ono:files id="files" locations="/Users/ono/Downloads/syn-project-test-file/" type="all" excludes=""/>
+    <ono:storage type="pg" address="127.0.0.1" user="postgres" password="root" hostname="localhost"/>
+    <ono:reporter reporterAddress="127.0.0.1:8080" url="/fileChange" />
+</beans>

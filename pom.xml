@@ -14,8 +14,9 @@
         <java.version>1.8</java.version>
     </properties>
     <modules>
-        <module>syn-configuration-file-change</module>
         <module>syn-configuration-file-project</module>
+        <module>syn-configuration-file-change</module>
     </modules>
+
 
 </project>

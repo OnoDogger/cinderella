@@ -24,6 +24,9 @@ public class FileUtils {
     }
 
     public static String findFileType(String fileName){
+        if (StringUtils.isBlank(fileName)){
+            return "";
+        }
         return fileName.substring(fileName.lastIndexOf(".") + 1);
     }
 

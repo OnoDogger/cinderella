@@ -15,6 +15,7 @@ public class Constants {
     public static final String PROTOCOL_PROPERTIES = "properties";
     public static final String PROTOCOL_YML="yml";
     public static final String PROTOCOL_ALL="all";
+    public static final String PROTOCOL_COMMON="common";
 
 
     public static final List<String> unmodifiableTypesList = Collections.unmodifiableList(new ArrayList<String>(){{
@@ -25,5 +26,5 @@ public class Constants {
 
 
     public static final String STORAGE_PG = "pg";
-
+    public static final long TIME_INTERVAL = 10l*1000;
 }

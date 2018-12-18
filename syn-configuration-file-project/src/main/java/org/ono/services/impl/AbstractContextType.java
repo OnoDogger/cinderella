@@ -101,8 +101,13 @@ public abstract class AbstractContextType implements IContextType {
         Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
 
             @Override
-            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+                LOG.info("directories list {}", dir.toString());
+                return FileVisitResult.CONTINUE;
+            }
 
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 String fileType = FileUtils.findFileType(file);
                 if (Constants.unmodifiableTypesList.contains(fileType)
                         && (CollectionUtils.isEmpty(excludeFiles) || !excludeFiles.contains(file.getFileName()))
@@ -111,7 +116,7 @@ public abstract class AbstractContextType implements IContextType {
                     final Map<String,String> map = new HashMap<>();
                     byte[] bytes = Files.readAllBytes(file);
                     String m = resolve(bytes, Constants.ENCODING);
-                    map.put(file.getFileName().toString(), m);
+                    map.put(file.toString(), m);
 
                     if (result.containsKey(fileType)){
                         result.get(fileType).add(map);

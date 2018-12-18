@@ -9,5 +9,5 @@ import java.io.IOException;
  */
 public interface IFileOperator {
 
-    public void reconstructureFile(FileBo fileBo) throws IOException;
+    public void reconstructureFile(FileBo fileBo) throws Exception;
 }

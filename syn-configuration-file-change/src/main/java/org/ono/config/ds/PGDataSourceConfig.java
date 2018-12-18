@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
  * Created by ono on 2018/12/4.
  */
 @Configuration
+@ImportResource(locations = {"classpath:applicationContext.xml"})
 @MapperScan(basePackages = PGDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "pgSqlSessionFactory")
 public class PGDataSourceConfig {
     static final String PACKAGE = "org.ono.config.ds";
